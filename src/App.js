@@ -238,28 +238,8 @@ const ChemistryTest = () => {
   const HomePage = () => (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-6">
       <div className="max-w-4xl mx-auto">
-        <div className="bg-white rounded-2xl shadow-2xl p-4 sm:p-6 md:p-8 mb-6 relative">
-          {/* Meme Images - Top Right (Responsive) */}
-          <div className="absolute top-2 right-2 sm:top-4 sm:right-4 flex flex-row sm:flex-col gap-1 sm:gap-2 items-end z-10">
-            <img 
-              src="/study-meme.png" 
-              alt="Study motivation meme" 
-              className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 object-cover rounded-lg shadow-md hover:shadow-lg transition-all hover:scale-105 border-2 border-indigo-200"
-              onError={(e) => {
-                e.target.style.display = 'none';
-              }}
-            />
-            <img 
-              src="/confidence-meme.png" 
-              alt="Confidence motivation" 
-              className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 object-cover rounded-lg shadow-md hover:shadow-lg transition-all hover:scale-105 border-2 border-purple-200"
-              onError={(e) => {
-                e.target.style.display = 'none';
-              }}
-            />
-          </div>
-          
-          <div className="text-center mb-8 pr-20 sm:pr-28 md:pr-36 lg:pr-44">
+        <div className="bg-white rounded-2xl shadow-2xl p-4 sm:p-6 md:p-8 mb-6">
+          <div className="text-center mb-8">
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-indigo-900 mb-2">UP Board Class 12</h1>
             <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-indigo-700 mb-4">Chemistry Practice Test</h2>
             <p className="text-sm sm:text-base md:text-lg text-gray-600">Based on Previous 10 Years Most Repeated Questions</p>
@@ -312,6 +292,52 @@ const ChemistryTest = () => {
               <div>• Amines & Biomolecules</div>
               <div>• Polymers & Everyday Chemistry</div>
             </div>
+          </div>
+        </div>
+        
+        {/* Footer with Meme Images */}
+        <div className="bg-white rounded-2xl shadow-xl p-4 sm:p-6 md:p-8 mt-6">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8">
+            <img 
+              src={`${process.env.PUBLIC_URL || ''}/study-meme.png`}
+              onError={(e) => {
+                console.error('Failed to load study-meme.png, trying alternatives...');
+                const baseSrc = e.target.src.replace(/\.(png|jpg|jpeg)$/i, '');
+                const extensions = ['.jpg', '.jpeg', '.png', '.webp'];
+                let currentExt = e.target.src.match(/\.(png|jpg|jpeg|webp)$/i)?.[0] || '.png';
+                let extIndex = extensions.indexOf(currentExt);
+                if (extIndex < extensions.length - 1) {
+                  e.target.src = baseSrc + extensions[extIndex + 1];
+                } else {
+                  console.error('All image formats failed. Image path:', e.target.src);
+                  e.target.style.display = 'none';
+                }
+              }}
+              onLoad={(e) => console.log('Image loaded successfully:', e.target.src)}
+              alt="Study motivation meme - Kyu nahi hori padhai?!" 
+              className="max-w-full h-auto max-h-96 object-contain rounded-xl shadow-lg hover:shadow-xl transition-all hover:scale-105 border-2 border-indigo-200"
+              style={{ width: 'auto', height: 'auto' }}
+            />
+            <img 
+              src={`${process.env.PUBLIC_URL || ''}/confidence-meme.png`}
+              onError={(e) => {
+                console.error('Failed to load confidence-meme.png, trying alternatives...');
+                const baseSrc = e.target.src.replace(/\.(png|jpg|jpeg)$/i, '');
+                const extensions = ['.jpg', '.jpeg', '.png', '.webp'];
+                let currentExt = e.target.src.match(/\.(png|jpg|jpeg|webp)$/i)?.[0] || '.png';
+                let extIndex = extensions.indexOf(currentExt);
+                if (extIndex < extensions.length - 1) {
+                  e.target.src = baseSrc + extensions[extIndex + 1];
+                } else {
+                  console.error('All image formats failed. Image path:', e.target.src);
+                  e.target.style.display = 'none';
+                }
+              }}
+              onLoad={(e) => console.log('Image loaded successfully:', e.target.src)}
+              alt="Confidence motivation - Have some confidence in what you're doing" 
+              className="max-w-full h-auto max-h-96 object-contain rounded-xl shadow-lg hover:shadow-xl transition-all hover:scale-105 border-2 border-purple-200"
+              style={{ width: 'auto', height: 'auto' }}
+            />
           </div>
         </div>
       </div>
