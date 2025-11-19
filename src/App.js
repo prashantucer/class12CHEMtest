@@ -7,7 +7,7 @@ const ChemistryTest = () => {
   const [showMcqResults, setShowMcqResults] = useState(false);
   const [showAnswers, setShowAnswers] = useState({});
 
-  // MCQ Questions - Common repeated topics from UP Board
+  // MCQ Questions - Common repeated topics from UP Board shuffled!
   const mcqQuestions = [
     {
       id: 1,
